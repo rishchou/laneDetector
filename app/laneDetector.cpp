@@ -12,7 +12,6 @@
 #include <vector>
 #include "opencv2/opencv.hpp"
 #include "../include/laneDetector.hpp"
-#define UNUSED(expr) do { (void)(expr); } while (0)
 
 float sampleData[10] = { 1, 2, 3, 4, 5, 6, 7, 8 };
 cv::Mat sample = cv::Mat(2, 4, CV_32F, sampleData);
