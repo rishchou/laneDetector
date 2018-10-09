@@ -1,8 +1,6 @@
 #include <iostream>
-#include <lib.hpp>
-
+#include "../include/laneDetector.hpp"
 int main()
 {
-    dummy();
     return 0;
 }
