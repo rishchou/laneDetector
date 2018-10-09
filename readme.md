@@ -4,22 +4,42 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 ---
 
-## Overview
-
-This project was developed following parallel programming concepts and SIP.
-Detailed SIP Enactment with product backlog,iteration backlog and work log can be found at:
-https://drive.google.com/open?id=183sKj2swdKSm_PcDJ1Mgq3aHfgy-bwtHUH6M_g_unfc
-
 ## Authors
 
 - Driver - Rishabh Choudhary
 - Navigator - Akash Atharv
 
-## 
+## Project Overview
 
-## To Do List
-- [ ] Complete Overview in Readme
-- [ ] Perform cpplint and cppcheck
+The project aims to design and develop Traffic lane detection and following for autonomous vehicles. Lane Detection technology is being used for various applications in the autonomous vehicular domain such as accident prevention and self driving cars. Self driving cars incoporate various aspects of technology such as perception, control and navigation/planning. 
+This project focuses on the perception module to develop traffic lane detection and following using OpenCV with C++. We aim to develop a software infrastructure which is able to detect road lanes and signal the driver in case the car deviates from the designated lane. The lane detection  includes multiple computer vision alorithms implemented in a sequence to finally output the detected lanes given a input video/image of the road.
+
+Algorithm:
+1. Convert input RGB image to grayscale Image to reduce processing time.
+2. Apply a noise filter to the output image from previous step to filter out the noise.
+3. Feed the noise filtered image to an edge detector (Canny edge detector) to detect the lines which form the boundary of lanes.
+4. Mask the edge detected image to consider only region of Interest.
+5. Apply hough transform to generate the location of all lines in the image.
+6. Classify the lines as left and right using basic linear algebra.
+7. Apply linear regression on left and right lines to generate only one line on each side of the lane.
+8. Superimpose the output lines on the original Image to display the results.
+
+## SIP (Solo Iterative Process)
+ 
+This project was developed following pair programming concepts and SIP. The estimated and completed tasks have been stored in the form of product backlog, Iteration backlog and work log to include the specifics of each task. The product backlog contains the set of all of the tasks to be completed for the given feature implementation. The iteration backlog includes tasks that were repeated over the course of Sprint.
+
+The project will be completed in two week sprints as follows:
+1. Sprint 1 will cover Phase 1 design and class definitions and stub implementations along with other setup tasks.
+2. Sprint 2 will cover Phase 2 implement each class method functionality and unit testing for different input and output and end to end functionality implementation.
+
+Detailed SIP Enactment with product backlog,iteration backlog and work log can be found at:
+https://drive.google.com/open?id=183sKj2swdKSm_PcDJ1Mgq3aHfgy-bwtHUH6M_g_unfc
+
+## Dependencies
+
+The project is implemented using OpenCV library and C++ and cmake. OpenCV can be installed in the system using the following link.
+https://docs.opencv.org/3.4.1/d2/de6/tutorial_py_setup_in_ubuntu.html
+
 
 ## Standard install via command-line
 ```
@@ -153,7 +173,7 @@ doxygen ./Doxygen
 ```
 The MIT License
 
-Copyright 2018 Akash Atharv, Rishabh Choudhary
+Copyright 2018 Rishabh Choudhary, Akash Atharv
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction,
 including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
