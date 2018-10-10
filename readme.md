@@ -14,7 +14,7 @@
 The project aims to design and develop Traffic lane detection and following for autonomous vehicles. Lane Detection technology is being used for various applications in the autonomous vehicular domain such as accident prevention and self driving cars. Self driving cars incoporate various aspects of technology such as perception, control and navigation/planning. 
 This project focuses on the perception module to develop traffic lane detection and following using OpenCV with C++. We aim to develop a software infrastructure which is able to detect road lanes and signal the driver in case the car deviates from the designated lane. The lane detection  includes multiple computer vision alorithms implemented in a sequence to finally output the detected lanes given a input video/image of the road.
 
-Algorithm:
+## Algorithm:
 1. Convert input RGB image to grayscale Image to reduce processing time.
 2. Apply a noise filter to the output image from previous step to filter out the noise.
 3. Feed the noise filtered image to an edge detector (Canny edge detector) to detect the lines which form the boundary of lanes.
@@ -23,6 +23,12 @@ Algorithm:
 6. Classify the lines as left and right using basic linear algebra.
 7. Apply linear regression on left and right lines to generate only one line on each side of the lane.
 8. Superimpose the output lines on the original Image to display the results.
+
+## Activity diagram:
+
+<p align="center">
+  <img width="460" height="800" src="https://github.com/rishchou/laneDetector/blob/master/UML/revised/Activity_diagram.jpeg">
+</p>
 
 ## SIP (Solo Iterative Process)
  
@@ -34,6 +40,11 @@ The project will be completed in two week sprints as follows:
 
 Detailed SIP Enactment with product backlog,iteration backlog and work log can be found at:
 https://drive.google.com/open?id=183sKj2swdKSm_PcDJ1Mgq3aHfgy-bwtHUH6M_g_unfc
+
+## To-do tasks for pair programming (Driver navigator discussion)
+- [x] Update activity diagram 
+- [ ] Run cpplint and cppcheck (Sprint 2)
+- [x] Add defect log and release backlog
 
 ## Dependencies
 
