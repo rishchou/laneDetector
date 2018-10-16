@@ -13,7 +13,7 @@
 class lanes: public imageProcessor {
 public:
 	lanes();
-	virtual ~lanes();
+	~lanes();
 	std::vector<cv::Vec4i> getLeftLines() { return leftLines; }
 	std::vector<cv::Vec4i> getRightLines() { return rightLines; }
 	cv::Mat lineSeparation(std::vector<cv::Vec4i>, cv::Mat);

@@ -1,5 +1,5 @@
 /*
- * imageProcessor.hpp
+ * imageProcessor.hpi
  *
  *  Created on: Oct 15, 2018
  *      Author: viki
@@ -22,7 +22,7 @@ class imageProcessor {
  public:
 
 	imageProcessor();
-	virtual ~imageProcessor();
+	~imageProcessor();
 	cv::Mat getOriginalImage();
 	cv::Mat getGrayImage();
 	cv::Mat getNoiseImage();
