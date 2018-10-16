@@ -118,7 +118,7 @@ cd build
 cmake ..
 make
 Run tests: ./test/cpp-test
-Run program: ./app/laneDetector
+Run program: ./app/laneDetector path/to/the/video/in/the/repository
 ```
 
 ## Building for code coverage 
