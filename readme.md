@@ -30,6 +30,57 @@ This project focuses on the perception module to develop traffic lane detection 
   <img width="460" height="800" src="https://github.com/rishchou/laneDetector/blob/master/UML/revised/Activity_diagram.jpeg">
 </p>
 
+## Workflow
+
+- First step of the process of lane detection is to capture individual frames from the video sample and then iterate the frames across the video while implementation of the lane detection functionality. This image depicts the first frame from the sample video which consists of multiple lanes, where our vehicle is running on the left most lane.
+
+<p align="center">
+  <img width="660" height="400" src="https://github.com/rishchou/laneDetector/blob/master/data/input.jpg">
+</p>
+
+- After the frame is acquired, the acquired image is coverted from BGR representation to a grayscale representation which gets rid of a lot of extra information which we do not require and this conversion is necessary for further processing of the frame.
+
+<p align="center">
+  <img width="660" height="400" src="https://github.com/rishchou/laneDetector/blob/master/data/grayscale.jpg">
+</p>
+
+- The next step is to remove any unwanted disturbances present in the surroundings which may hinder the performance of our program. This is achieved using the GaussianBlur function present in the OpenCV library which was chosen among lots of filters like Averaging, MedianBlur, BilateralBlur on the basis of their performance in our task. The GaussianBlur function removes noise from our system by smoothening the frame in smaller frames and iterating those frames throughout the image.
+
+<p align="center">
+  <img width="660" height="400" src="https://github.com/rishchou/laneDetector/blob/master/data/gaussianblur.jpg">
+</p>
+
+- Since we have to detect lanes in our system, one of the most effective pre-processing techniques which can be used first hand to detect the corresponding lines in the frame is the Cannyedge detector function in OpenCV. The Canny edge detector function uses thresholdding pixel gradient values to detect the edges present in our system.
+
+<p align="center">
+  <img width="660" height="400" src="https://github.com/rishchou/laneDetector/blob/master/data/cannyedge.jpg">
+</p>
+
+- Clearly, seen in the cannyedge detector output, a lot of unwanted edges are detected in the frame which are not required for lane detection. Since, the camera position of the video is fixed, we can therefore define a specific region in the frame called the Region of Interest which is preserved while other information is removed from the canny edge detector output by masking the frame.
+
+<p align="center">
+  <img width="660" height="400" src="https://github.com/rishchou/laneDetector/blob/master/data/roi.jpg">
+</p>
+
+- Now the next step in our pipeline, would beI to extract the lanes in our frame using the detected edges in our Region of Interest. This is done using HoughLinesP function present in the OpenCV library where other parameters are estimated by trial and error. The aforementioned function extracts and plots the houghlines on our processed frame as shown in the above figure.
+
+<p align="center">
+  <img width="660" height="400" src="https://github.com/rishchou/laneDetector/blob/master/data/hough.jpg">
+</p>
+
+- As seen in the previous Hough transform function, a lot of unwanted lines were detected in the system. These lines are removed by thresholding their slopes (primarily to get rid of horizontal line). Now, the processed lines are regressed to form two separate lines which will correspond to the right and left lanes in our frame. This decision is made by differentiating the lines using their slope.
+
+<p align="center">
+  <img width="660" height="400" src="https://github.com/rishchou/laneDetector/blob/master/data/lineregression.jpg">
+</p>
+
+- Now the last step, is to draw the two regressed lines or lanes in the input frame and predict the lane turn. This prediction is done by calculating the point of intersection of the two lines and then comparing it with the centre of the origin of both lines. This heading is then also superimposed on the output image, completing the functionality of the program. 
+
+<p align="center">
+  <img width="660" height="400" src="https://github.com/rishchou/laneDetector/blob/master/data/output.jpg">
+</p>
+
+
 ## SIP (Solo Iterative Process)
  
 This project was developed following pair programming concepts and SIP. The estimated and completed tasks have been stored in the form of product backlog, Iteration backlog and work log to include the specifics of each task. The product backlog contains the set of all of the tasks to be completed for the given feature implementation. The iteration backlog includes tasks that were repeated over the course of Sprint.
@@ -45,9 +96,9 @@ https://drive.google.com/open?id=183sKj2swdKSm_PcDJ1Mgq3aHfgy-bwtHUH6M_g_unfc
 - [x] Update activity diagram 
 - [ ] Run cpplint and cppcheck (Sprint 2)
 - [x] Add defect log and release backlog
-- [ ] Modify implementation pipeline using separate classes
+- [x] Modify implementation pipeline using separate classes
 - [ ] Update UML diagram according to new implementation
-- [ ] Write Unit Tests and test the code
+- [x] Write Unit Tests and test the code
 - [ ] Run Valgrind to detect memory leaks
 - [ ] Generate Doxygen document
 - [ ] Make sure that the repository is updated with deliverables mentioned in Proposal
@@ -67,7 +118,7 @@ cd build
 cmake ..
 make
 Run tests: ./test/cpp-test
-Run program: ./app/laneDetector
+Run program: ./app/laneDetector path/to/the/video/in/the/repository
 ```
 
 ## Building for code coverage 
