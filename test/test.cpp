@@ -1,17 +1,4 @@
 /**============================================================================
- * @file         test.cpp
- * Author      : Rishabh Choudhary, Akash Atharv
- * Version     : 1.0
- * @Copyright  : MIT License
- * Copyright 2018 Rishabh Choudhary, Akash Atharv
- * @brief        test file for unit testing
- *============================================================================
- */
-
-#include <iostream>
-#include <string>
-#include <vector>
-/**============================================================================
  * @file        : test.cpp
  * @author      : Rishabh Choudhary, Akash Atharv
  * @version     : 1.0
@@ -20,7 +7,10 @@
  * @brief        Contains Test cases for testing prediction heading generated
  *============================================================================
  */
-
+#include <gtest/gtest.h>
+#include <iostream>
+#include <string>
+#include <vector>
 #include "opencv2/opencv.hpp"
 #include <opencv2/objdetect/objdetect.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
@@ -28,7 +18,6 @@
 #include <opencv2/highgui/highgui.hpp>
 #include "../include/imageProcessor.hpp"
 #include "../include/lanes.hpp"
-#include <gtest/gtest.h>
 
 /**
  *@brief Function implentation to generate heading for a single frame
@@ -36,8 +25,7 @@
  *@return testHeading which is a string that outputs the heading generated
  */
 
-std::string testHeading(int frameNumber)
-{
+std::string testHeading(int frameNumber) {
       lanes img;
       cv::Mat originalImage;
       cv::Mat maskImage;
@@ -55,7 +43,8 @@ std::string testHeading(int frameNumber)
       img.rgbToGray(frame);
       img.noiseFilter(img.getGrayImage());
       img.edgeDetector(img.getNoiseImage());
-      cv::Mat mask = cv::Mat::zeros(img.getEgdeImage().size(), img.getEgdeImage().type());
+      cv::Mat mask = cv::Mat::zeros(img.getEgdeImage().size(),
+      img.getEgdeImage().type());
       cv::Point pts[4] = {
         cv::Point(0, 831),
         cv::Point(629, 465),
@@ -78,7 +67,7 @@ std::string testHeading(int frameNumber)
  */
 
 TEST(LaneHeadingTest, Vehicle_go_straight) {
-      EXPECT_EQ(testHeading(100),"Straight");
+      EXPECT_EQ(testHeading(100), "Straight");
 }
 
 /**
@@ -88,7 +77,7 @@ TEST(LaneHeadingTest, Vehicle_go_straight) {
  */
 
 TEST(LaneHeadingTest, Vehicle_right_turn) {
-      EXPECT_EQ(testHeading(600),"Right Turn");
+      EXPECT_EQ(testHeading(600), "Right Turn");
 }
 
 /**
@@ -98,7 +87,7 @@ TEST(LaneHeadingTest, Vehicle_right_turn) {
  */
 
 TEST(LaneHeadingTest, Vehicle_left_turn) {
-      EXPECT_EQ(testHeading(1),"Left Turn");
+      EXPECT_EQ(testHeading(1), "Left Turn");
 }
 
 

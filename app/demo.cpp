@@ -28,20 +28,20 @@
  */
 
 int main(int argc, char* argv[]) {
-
     std::string inputVideo;
     cv::Mat originalImage;
 
     cv::Mat maskImage;
     cv::Mat frame;
-	cv::Mat separateImage;
+    cv::Mat separateImage;
     /* If number of arguments specified is incorrect, return */
-	if( argc != 2 ) {
-        std::cout << "Wrong usage : PLease specify Input video "
-        		"clip with the program as argument" <<std::endl;
+    if ( argc != 2 ) {
+        std::cout << "Wrong usage : PLease"
+        "specify Input video clip with the"
+        " program as argument" << std::endl;
         return -1;
     }
-    
+
     inputVideo = argv[1];
 
     /* Capture the video clip into inputVideo */
@@ -50,9 +50,9 @@ int main(int argc, char* argv[]) {
     /* If not able to open video file, return */
     if (!cap.isOpened()) return -1;
 
-    while(1) {
-    	// Read video frame by frame
-    	if (!cap.read(frame)) break;
+    while (1) {
+        // Read video frame by frame
+        if (!cap.read(frame)) { break; }
         originalImage = frame;
 
         /* Initialize object for class lanes */
@@ -82,7 +82,8 @@ int main(int argc, char* argv[]) {
         /* Display the edge detected image */
         cv::imshow("Display Canny edge", img.getEgdeImage());
 
-        cv::Mat mask = cv::Mat::zeros(img.getEgdeImage().size(), img.getEgdeImage().type());
+        cv::Mat mask = cv::Mat::zeros
+        (img.getEgdeImage().size(), img.getEgdeImage().type());
 
         /* Define the points for region of interest */
         cv::Point pts[4] = {
@@ -121,22 +122,22 @@ int main(int argc, char* argv[]) {
         cv::imshow("Display separated lines", separateImage);
 
         std::vector<cv::Point> rightPts;
-   	    std::vector<cv::Point> leftPts;
+        std::vector<cv::Point> leftPts;
         std::vector<cv::Point> outputLines;
 
-        /** Apply linear regression on the set of points obtained from
-         *  separated lines to generate one line on left and right side which form the lane
-         */
-   	    outputLines = img.fitLine(rightPts, leftPts);
+       /** Apply linear regression on the set of points obtained from
+        *  separated lines to generate one line on left and right side which form the lane
+        */
+       outputLines = img.fitLine(rightPts, leftPts);
 
-   	    /*
-   	     * Display output lines along with predicted text
-   	     */
-        img.showOutput(img.prediction, originalImage, outputLines);
-        cv::waitKey(50);
+       /*
+        * Display output lines along with predicted text
+        */
+       img.showOutput(img.prediction, originalImage, outputLines);
+       cv::waitKey(50);
        }
 
-	cv::waitKey(0);
+    cv::waitKey(0);
 
     return 0;
 }

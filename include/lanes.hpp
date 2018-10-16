@@ -11,6 +11,8 @@
 #ifndef INCLUDE_LANES_HPP_
 #define INCLUDE_LANES_HPP_
 
+#include <string>
+#include <vector>
 #include <imageProcessor.hpp>
 
 /**
@@ -22,35 +24,37 @@
  */
 
 class lanes: public imageProcessor {
-public:
+ public:
         /**
          * @brief constructor for lanes
          * @param none
          * @return none
          */
-	lanes();
+        lanes();
         /**
          * @brief destructor for lanes
          * @param none
          * @return none
          */
-	~lanes();
+        ~lanes();
         /**
          * @brief function for retrieving set of lines detected on left side
          * @param none
          * @return vector containing points describing set of left lines
          */
-	std::vector<cv::Vec4i> getLeftLines() { return leftLines; }
+        std::vector<cv::Vec4i> getLeftLines() { return leftLines; }
         /**
          * @brief function for retrieving set of lines detected on right side
          * @param none
          * @return vector containing points describing set of right lines
          */
-	std::vector<cv::Vec4i> getRightLines() { return rightLines; }
-	cv::Mat lineSeparation(std::vector<cv::Vec4i>, cv::Mat);
-	std::vector<cv::Point> fitLine(std::vector<cv::Point>, std::vector<cv::Point>);
-	std::string lanePrediction(cv::Vec4f, cv::Vec4f, std::vector<cv::Point>);
-	std::string prediction;
+        std::vector<cv::Vec4i> getRightLines() { return rightLines; }
+        cv::Mat lineSeparation(std::vector<cv::Vec4i>, cv::Mat);
+        std::vector<cv::Point> fitLine(std::vector<cv::Point>,
+        std::vector<cv::Point>);
+        std::string lanePrediction(cv::Vec4f, cv::Vec4f,
+        std::vector<cv::Point>);
+        std::string prediction;
         /**
          * @brief function for displaying the output
          * @param string which contains the direction of heading
@@ -58,14 +62,15 @@ public:
          * @param set of points which describe the lanes
          * @return none
          */
-	void showOutput(std::string, cv::Mat, std::vector<cv::Point>);
-private:
-	cv::Point rightB;       /* y = mX + B */     /* B of right line */
-	cv::Point leftB;		/* B of left line */
-	double rightSlope;	    /* slope of right line */
-	double leftSlope;		/* slope of left line */
-	std::vector<cv::Vec4i> rightLines;	/* Set of right lines */
-	std::vector<cv::Vec4i> leftLines;   /* Set of left lines */
+        void showOutput(std::string, cv::Mat, std::vector<cv::Point>);
+
+ private:
+        cv::Point rightB;/* y = mX + B */     /* B of right line */
+        cv::Point leftB;                      /* B of left line */
+        double rightSlope;                    /* slope of right line */
+        double leftSlope;                     /* slope of left line */
+        std::vector<cv::Vec4i> rightLines;    /* Set of right lines */
+        std::vector<cv::Vec4i> leftLines;     /* Set of left lines */
 };
 
 #endif /* INCLUDE_LANES_HPP_ */
