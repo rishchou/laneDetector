@@ -45,6 +45,12 @@ https://drive.google.com/open?id=183sKj2swdKSm_PcDJ1Mgq3aHfgy-bwtHUH6M_g_unfc
 - [x] Update activity diagram 
 - [ ] Run cpplint and cppcheck (Sprint 2)
 - [x] Add defect log and release backlog
+- [ ] Modify implementation pipeline using separate classes
+- [ ] Update UML diagram according to new implementation
+- [ ] Write Unit Tests and test the code
+- [ ] Run Valgrind to detect memory leaks
+- [ ] Generate Doxygen document
+- [ ] Make sure that the repository is updated with deliverables mentioned in Proposal
 
 ## Dependencies
 
