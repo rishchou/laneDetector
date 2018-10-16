@@ -1,3 +1,13 @@
+/**============================================================================
+ * @file       : demo.cpp
+ * @author     : Rishabh Choudhary, Akash Atharv
+ * @version    : 1.0
+ * @Copyright  : MIT License
+ * Copyright 2018 Rishabh Choudhary, Akash Atharv
+ * @brief      : Implements an instance of lane detection application
+ *============================================================================
+ */
+
 #include <iostream>
 #include <string>
 #include <vector>
@@ -9,6 +19,13 @@
 #include "../include/imageProcessor.hpp"
 #include "../include/lanes.hpp"
 
+/**
+ *@brief Function main that runs the main algorithm of the lane detection.
+ *@brief It will read a video of a car in the highway and it will output the
+ *@brief same video but with the plotted detected lane
+ *@param argv[] is a string to the full path of the demo video
+ *@return flag_plot tells if the demo has sucessfully finished
+ */
 
 int main(int argc, char* argv[]) {
 

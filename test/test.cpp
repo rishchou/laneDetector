@@ -11,6 +11,16 @@
 #include <iostream>
 #include <string>
 #include <vector>
+/**============================================================================
+ * @file        : test.cpp
+ * @author      : Rishabh Choudhary, Akash Atharv
+ * @version     : 1.0
+ * @copyright   : MIT License
+ * Copyright 2018 Rishabh Choudhary, Akash Atharv
+ * @brief        Contains Test cases for testing prediction heading generated
+ *============================================================================
+ */
+
 #include "opencv2/opencv.hpp"
 #include <opencv2/objdetect/objdetect.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
@@ -19,6 +29,12 @@
 #include "../include/imageProcessor.hpp"
 #include "../include/lanes.hpp"
 #include <gtest/gtest.h>
+
+/**
+ *@brief Function implentation to generate heading for a single frame
+ *@param frameNumber is used to specify the frame to be tested 
+ *@return testHeading which is a string that outputs the heading generated
+ */
 
 std::string testHeading(int frameNumber)
 {
@@ -55,13 +71,31 @@ std::string testHeading(int frameNumber)
       return(img.prediction);
 }
 
+/**
+ *@brief Case to test for straight direction prediction
+ *@param none
+ *@return none
+ */
+
 TEST(LaneHeadingTest, Vehicle_go_straight) {
       EXPECT_EQ(testHeading(100),"Straight");
 }
 
+/**
+ *@brief Case to test for right turn direction prediction
+ *@param none
+ *@return none
+ */
+
 TEST(LaneHeadingTest, Vehicle_right_turn) {
       EXPECT_EQ(testHeading(600),"Right Turn");
 }
+
+/**
+ *@brief Case to test for left turn direction prediction
+ *@param none
+ *@return none
+ */
 
 TEST(LaneHeadingTest, Vehicle_left_turn) {
       EXPECT_EQ(testHeading(1),"Left Turn");

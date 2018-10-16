@@ -1,8 +1,11 @@
-/*
- * imageProcessor.cpp
- *
- *  Created on: Oct 15, 2018
- *      Author: viki
+/**============================================================================
+ * @file       : imageProcessor.cpp
+ * @author     : Rishabh Choudhary, Akash Atharv
+ * @version    : 1.0
+ * @copyright  : MIT License
+ * Copyright 2018 Rishabh Choudhary, Akash Atharv
+ * @brief      : Contains function definitions of the class imageProcessor
+ *============================================================================
  */
 
 #include "../include/imageProcessor.hpp"
