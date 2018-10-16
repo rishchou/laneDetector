@@ -14,92 +14,110 @@ int main(int argc, char* argv[]) {
 
     std::string inputVideo;
     cv::Mat originalImage;
-   // cv::Mat noiseImage;
-  //  cv::Mat edgeImage;
-   // int lowThreshold = 100;
-   // int ratio = 3;
-   // int kernelSize = 3;
+
     cv::Mat maskImage;
     cv::Mat frame;
-   // cv::Mat houghImage;
 	cv::Mat separateImage;
-    if( argc != 2 ) {
-        std::cout << "Usage wrong" <<std::endl;
-	return -1;
+    /* If number of arguments specified is incorrect, return */
+	if( argc != 2 ) {
+        std::cout << "Wrong usage : PLease specify Input video "
+        		"clip with the program as argument" <<std::endl;
+        return -1;
     }
     
-
     inputVideo = argv[1];
+
+    /* Capture the video clip into inputVideo */
     cv::VideoCapture cap(inputVideo);
+
+    /* If not able to open video file, return */
     if (!cap.isOpened()) return -1;
 
     while(1) {
+    	// Read video frame by frame
     	if (!cap.read(frame)) break;
-    originalImage = frame;
-    lanes img;
-    //double ic = double(originalImage.cols/2);
-    //img.setImageCentre(ic);
-    img.setOriginalImage(originalImage);
-    img.rgbToGray(originalImage);
+        originalImage = frame;
 
-    //  cv::Mat grayImage;
-   // cv::cvtColor(originalImage, grayImage, CV_BGR2GRAY);
+        /* Initialize object for class lanes */
+        lanes img;
 
+        /* Set the class member originalImage to input frame */
+        img.setOriginalImage(originalImage);
 
+        /* Create a window for display */
+        cv::namedWindow("Display Image", cv::WINDOW_AUTOSIZE);
 
-    cv::namedWindow("Display Image", cv::WINDOW_AUTOSIZE);
-    cv::imshow("Display GrayScale Image", img.getGrayImage());
+        /* Convert the original RGB format image to GrayScale */
+        img.rgbToGray(originalImage);
 
-    img.noiseFilter(img.getGrayImage());
-   // cv::GaussianBlur(grayImage, noiseImage, cv::Size(3,3), 0, 0);
-   // cv::medianBlur(grayImage,noiseImage, kernelSize);
-    cv::imshow("Display Noise filtered Image", img.getNoiseImage());
-    img.edgeDetector(img.getNoiseImage());
-    //cv::Canny( noiseImage, edgeImage, lowThreshold, lowThreshold*ratio, kernelSize );
-    cv::imshow("Display Canny edge", img.getEgdeImage());
+        /* Display the grayscale image */
+        cv::imshow("Display GrayScale Image", img.getGrayImage());
 
+        /* Filter the grayscale image to reduce noise */
+        img.noiseFilter(img.getGrayImage());
 
-    std::cout << "size of image " << img.getEgdeImage().size() << std::endl;
-    cv::Mat mask = cv::Mat::zeros(img.getEgdeImage().size(), img.getEgdeImage().type());
-    cv::Point pts[4] = {
+        /* Display the noise filtered image */
+        cv::imshow("Display Noise filtered Image", img.getNoiseImage());
+
+        /* Apply canny edge detection to noise filtered image to detect edges */
+        img.edgeDetector(img.getNoiseImage());
+
+        /* Display the edge detected image */
+        cv::imshow("Display Canny edge", img.getEgdeImage());
+
+        cv::Mat mask = cv::Mat::zeros(img.getEgdeImage().size(), img.getEgdeImage().type());
+
+        /* Define the points for region of interest */
+        cv::Point pts[4] = {
         cv::Point(0, 831),
         cv::Point(629, 465),
         cv::Point(756, 472),
         cv::Point(1195, 711)
-    };
-    std::cout << "size of image " << img.getEgdeImage().size() << std::endl;
-    // Create a binary polygon mask
-    cv::fillConvexPoly(mask, pts, 4, cv::Scalar(255, 0, 0));
-    // Multiply the edges image and the mask to get the output
-    cv::bitwise_and(img.getEgdeImage(), mask, maskImage);
+        };
 
-    std::cout << "size of image " << img.getEgdeImage().size() << std::endl;
+        /* Create a mask given by the points above */
+        cv::fillConvexPoly(mask, pts, 4, cv::Scalar(255, 0, 0));
 
-    img.grayToRGB(img.getEgdeImage());
-    std::cout << "size of image " << img.getEgdeImage().size() << std::endl;
-    cv::imshow("Display Region of interest", maskImage);
-    std::cout << "size of image " << img.getEgdeImage().size() << std::endl;
+        /**
+         * Superimpose mask with the edge detected
+         * image to generate region of interest image
+         */
+        cv::bitwise_and(img.getEgdeImage(), mask, maskImage);
 
-    std::vector<cv::Vec4i> lines;
-    lines = img.houghTransform(maskImage, img.getHoughImage());
-   // std::vector<cv::Vec4i> lines;
-    //cv::HoughLinesP(maskImage, lines, 1, CV_PI/180, 20 , 35, 30);
-    
-    cv::imshow("Display hough lines", img.getHoughImage());
+        /** Convert back the grayscale image to RGB for inputting into
+         *  Hough transform
+         */
+        img.grayToRGB(img.getEgdeImage());
+        cv::imshow("Display Region of interest", maskImage);
 
+        /* Apply hough transform on masked Image to generate lines */
+        std::vector<cv::Vec4i> lines;
+        lines = img.houghTransform(maskImage, img.getHoughImage());
 
-    separateImage = img.lineSeparation(lines, img.getEgdeImage());
-    cv::imshow("Display separated lines", separateImage);
+        /* Display generated lines given by Hough Transform */
+        cv::imshow("Display hough lines", img.getHoughImage());
 
-    std::vector<cv::Point> rightPts;
-   	std::vector<cv::Point> leftPts;
-    std::vector<cv::Point> outputLines;
-   	outputLines = img.fitLine(rightPts, leftPts);
+        /* Separate right and left lines on the road */
+        separateImage = img.lineSeparation(lines, img.getEgdeImage());
 
-    img.showOutput(img.prediction, originalImage, outputLines);
-    //cv::imshow("Display output", originalImage);
-    cv::waitKey(50);
-    }
+        /* Display the right and left line */
+        cv::imshow("Display separated lines", separateImage);
+
+        std::vector<cv::Point> rightPts;
+   	    std::vector<cv::Point> leftPts;
+        std::vector<cv::Point> outputLines;
+
+        /** Apply linear regression on the set of points obtained from
+         *  separated lines to generate one line on left and right side which form the lane
+         */
+   	    outputLines = img.fitLine(rightPts, leftPts);
+
+   	    /*
+   	     * Display output lines along with predicted text
+   	     */
+        img.showOutput(img.prediction, originalImage, outputLines);
+        cv::waitKey(50);
+       }
 
 	cv::waitKey(0);
 

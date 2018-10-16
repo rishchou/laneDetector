@@ -32,15 +32,7 @@ cv::Mat imageProcessor::getHoughImage() {
 void imageProcessor::setOriginalImage(cv::Mat image) {
 	originalImage = image;
 }
-/*
-cv::Mat imageProcessor::getImageCentre() {
-	return imageCentre;
-}
 
-void imageProcessor::setImageCentre(double ic) {
-	ic = imageCentre;
-}
-*/
 cv::Mat imageProcessor::rgbToGray(cv::Mat originalImage) {
 	cv::cvtColor(originalImage, grayImage, CV_BGR2GRAY);
 	return grayImage;
@@ -52,6 +44,9 @@ cv::Mat imageProcessor::grayToRGB(cv::Mat edgeImage) {
 }
 
 cv::Mat imageProcessor::noiseFilter(cv::Mat grayImage) {
+	/*
+	 * Apply Gaussian blur with kernel size 3
+	 */
 	cv::GaussianBlur(grayImage, noiseImage, cv::Size(3,3), 0, 0);
 	return noiseImage;
 }
@@ -68,6 +63,12 @@ cv::Mat imageProcessor::edgeDetector(cv::Mat noiseImage) {
 std::vector<cv::Vec4i> imageProcessor::houghTransform(cv::Mat maskImage, cv::Mat houghImage) {
 
 	std::vector<cv::Vec4i> lines;
+
+	/* Apply hough transform with given parameters
+	 * maxGapLenghth: 10
+	 * minSegmentLength = 30
+	 * min Number of votes = 30
+	 */
 	cv::HoughLinesP(maskImage, lines, 1, CV_PI/180, 30 , 30, 10);
 	for(auto i : lines) {
 		cv::line( houghImage, cv::Point(i[0], i[1]), cv::Point(i[2], i[3]), cv::Scalar(0,0,255), 3, CV_AA);

@@ -22,12 +22,12 @@ public:
 	std::string prediction;
 	void showOutput(std::string, cv::Mat, std::vector<cv::Point>);
 private:
-	cv::Point rightB;
-	cv::Point leftB;
-	double rightSlope;
-	double leftSlope;
-	std::vector<cv::Vec4i> rightLines;
-	std::vector<cv::Vec4i> leftLines;
+	cv::Point rightB;       /* y = mX + B */     /* B of right line */
+	cv::Point leftB;		/* B of left line */
+	double rightSlope;	    /* slope of right line */
+	double leftSlope;		/* slope of left line */
+	std::vector<cv::Vec4i> rightLines;	/* Set of right lines */
+	std::vector<cv::Vec4i> leftLines;   /* Set of left lines */
 };
 
 #endif /* INCLUDE_LANES_HPP_ */
