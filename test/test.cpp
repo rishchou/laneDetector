@@ -36,7 +36,7 @@ std::string testHeading(int frameNumber) {
       std::vector<cv::Point> leftPts;
       std::vector<cv::Point> outputLines;
 
-      cv::VideoCapture cap("../data/Vehicle Detection Raw Video.mp4");
+      cv::VideoCapture cap("../data/Lane Detection Test Video 01.mp4");
       cap.set(cv::CAP_PROP_POS_FRAMES, frameNumber);
       cap.read(frame);
       img.setOriginalImage(frame);
@@ -46,10 +46,10 @@ std::string testHeading(int frameNumber) {
       cv::Mat mask = cv::Mat::zeros(img.getEgdeImage().size(),
       img.getEgdeImage().type());
       cv::Point pts[4] = {
-        cv::Point(0, 831),
-        cv::Point(629, 465),
-        cv::Point(756, 472),
-        cv::Point(1195, 711)
+        cv::Point(150, 718),
+        cv::Point(600, 530),
+        cv::Point(650, 530),
+        cv::Point(1000, 718)
     };
       cv::fillConvexPoly(mask, pts, 4, cv::Scalar(255, 0, 0));
       cv::bitwise_and(img.getEgdeImage(), mask, maskImage);
@@ -68,7 +68,7 @@ std::string testHeading(int frameNumber) {
  */
 
 TEST(LaneHeadingTest, Vehicle_go_straight) {
-      EXPECT_EQ(testHeading(100), "Straight");
+      EXPECT_EQ(testHeading(600), "Heading Straight");
 }
 
 /**
@@ -78,7 +78,7 @@ TEST(LaneHeadingTest, Vehicle_go_straight) {
  */
 
 TEST(LaneHeadingTest, Vehicle_right_turn) {
-      EXPECT_EQ(testHeading(600), "Right Turn");
+      EXPECT_EQ(testHeading(100), "Heading Right");
 }
 
 /**
@@ -88,7 +88,7 @@ TEST(LaneHeadingTest, Vehicle_right_turn) {
  */
 
 TEST(LaneHeadingTest, Vehicle_left_turn) {
-      EXPECT_EQ(testHeading(1), "Left Turn");
+      EXPECT_EQ(testHeading(455), "Heading Left");
 }
 
 
