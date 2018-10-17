@@ -62,12 +62,13 @@ cv::Mat imageProcessor::edgeDetector(cv::Mat noiseImage) {
 std::vector<cv::Vec4i> imageProcessor::houghTransform(cv::Mat
 maskImage, cv::Mat houghImage) {
         std::vector<cv::Vec4i> lines;
-	/* Apply hough transform with given parameters
-	 * maxGapLenghth: 10
-	 * minSegmentLength = 30
-	 * min Number of votes = 30
-	 */
-        cv::HoughLinesP(maskImage, lines, 1, CV_PI/180, 30 , 30, 10);
+  /* Apply hough transform with given parameters
+   * maxGapLenghth: 300
+   * minSegmentLength = 20
+   * min Number of votes = 20
+   * The paramteres are calculated by hit and trial
+   */
+        cv::HoughLinesP(maskImage, lines, 1, CV_PI/180, 20 , 20, 300);
         for (auto i : lines) {
                 cv::line(houghImage, cv::Point(i[0], i[1]),
                 cv::Point(i[2], i[3]), cv::Scalar(0, 0, 255), 3, CV_AA);

@@ -30,7 +30,7 @@
 int main(int argc, char* argv[]) {
     std::string inputVideo;
     cv::Mat originalImage;
-
+    double i = 0;
     cv::Mat maskImage;
     cv::Mat frame;
     cv::Mat separateImage;
@@ -50,7 +50,7 @@ int main(int argc, char* argv[]) {
     /* If not able to open video file, return */
     if (!cap.isOpened()) return -1;
 
-    while (1) {
+    while (i < cap.get(CV_CAP_PROP_FRAME_COUNT)) {
         // Read video frame by frame
         if (!cap.read(frame)) { break; }
         originalImage = frame;
@@ -87,10 +87,10 @@ int main(int argc, char* argv[]) {
 
         /* Define the points for region of interest */
         cv::Point pts[4] = {
-        cv::Point(0, 831),
-        cv::Point(629, 465),
-        cv::Point(756, 472),
-        cv::Point(1195, 711)
+        cv::Point(150, 718),
+        cv::Point(600, 530),
+        cv::Point(650, 530),
+        cv::Point(1000, 718)
         };
 
         /* Create a mask given by the points above */
@@ -134,7 +134,8 @@ int main(int argc, char* argv[]) {
         * Display output lines along with predicted text
         */
        img.showOutput(img.prediction, originalImage, outputLines);
-       cv::waitKey(50);
+       cv::waitKey(5);
+       i++;
        }
 
     cv::waitKey(0);

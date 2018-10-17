@@ -114,7 +114,7 @@ std::vector<cv::Point> lanes::fitLine(std::vector<cv::Point> rightPts,
          * Find left and right x intercept on the image to draw lines
          */
         double bottomY = getOriginalImage().rows-1;
-        double topY = 475;
+        double topY = 530;        /* Draw line till the point horizon is seen */
         double rightInterceptX0 = ((bottomY - rightB.y) / rightSlope) +
         rightB.x;
         double rightInterceptX1 = ((topY - rightB.y) / rightSlope) + rightB.x;
@@ -140,7 +140,7 @@ std::vector<cv::Point> outputLines) {
         std::string turn;
         double vanishPt;
         double laneCenterX = (outputLines[0].x+outputLines[2].x)/2.0;
-        double vanishThreshold = 80;
+        double vanishThreshold = 50;
         /*
          * Compute the vanishing point of left and right lines
          */
@@ -149,11 +149,11 @@ std::vector<cv::Point> outputLines) {
 
         /* Based on vanishing point, decide the lane heading direction */
         if (vanishPt < (laneCenterX - vanishThreshold)) {
-                 turn = "Left Turn";
+                 turn = "Heading Left";
         } else if (vanishPt > (laneCenterX + vanishThreshold)) {
-                 turn = "Right Turn";
+                 turn = "Heading Right";
         } else {
-                 turn = "Straight";
+                 turn = "Heading Straight";
         }
         return turn;
 }
@@ -171,7 +171,7 @@ std::vector<cv::Point> outputLines) {
         /*
          * Draw lane heading text over the current frame
          */
-        cv::putText(frame, prediction, cv::Point(600, 600),
+        cv::putText(frame, prediction, cv::Point(500, 650),
         cv::FONT_HERSHEY_SIMPLEX, 1, cvScalar(255, 255, 255), 1, CV_AA);
 
         /*
