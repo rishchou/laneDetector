@@ -1,0 +1,14 @@
+==105052== LEAK SUMMARY:
+==105052==    definitely lost: 0 bytes in 0 blocks
+==105052==    indirectly lost: 0 bytes in 0 blocks
+==105052==      possibly lost: 5,530,160 bytes in 5 blocks
+==105052==    still reachable: 20,406 bytes in 109 blocks
+==105052==                       of which reachable via heuristic:
+==105052==                         length64           : 7,880 bytes in 116 blocks
+==105052==                         newarray           : 2,112 bytes in 52 blocks
+==105052==                         multipleinheritance: 9,744 bytes in 12 blocks
+==105052==         suppressed: 50,756,249 bytes in 36,220 blocks
+==105052== 
+==105052== For counts of detected and suppressed errors, rerun with: -v
+==105052== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 304 from 304)
+
