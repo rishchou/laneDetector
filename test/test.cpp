@@ -57,7 +57,7 @@ std::string testHeading(int frameNumber) {
       lines = img.houghTransform(maskImage, img.getHoughImage());
       separateImage = img.lineSeparation(lines, img.getEgdeImage());
       outputLines = img.fitLine(rightPts, leftPts);
-      img.showOutput(img.prediction, frame, outputLines);
+      //img.showOutput(img.prediction, frame, outputLines);
       return(img.prediction);
 }
 
