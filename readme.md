@@ -123,7 +123,7 @@ cd build
 cmake ..
 make
 Run tests: ./test/cpp-test
-Run program: ./app/laneDetector path/to/the/video/in/the/repository
+Run program: ./app/laneDetector ../data//Lane\ Detection\ Test\ Video\ 01.mp4
 ```
 
 ## Building for code coverage 
