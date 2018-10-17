@@ -24,7 +24,7 @@
  *@brief It will read a video of a car in the highway and it will output the
  *@brief same video but with the plotted detected lane
  *@param argv[] is a string to the full path of the demo video
- *@return flag_plot tells if the demo has sucessfully finished
+ *@return 0 for successful execution, -1 for failed execution
  */
 
 int main(int argc, char* argv[]) {
