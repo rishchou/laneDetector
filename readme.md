@@ -6,8 +6,13 @@
 
 ## Authors
 
+Sprint 1:
 - Driver - Rishabh Choudhary
 - Navigator - Akash Atharv
+
+Sprint 2:
+- Driver - Akash Atharv
+- Navigator - Rishabh CHoudhary
 
 ## Project Overview
 
@@ -99,9 +104,9 @@ https://drive.google.com/open?id=183sKj2swdKSm_PcDJ1Mgq3aHfgy-bwtHUH6M_g_unfc
 - [x] Modify implementation pipeline using separate classes
 - [x] Update UML diagram according to new implementation
 - [x] Write Unit Tests and test the code
-- [ ] Run Valgrind to detect memory leaks
-- [ ] Generate Doxygen document
-- [ ] Make sure that the repository is updated with deliverables mentioned in Proposal
+- [x] Run Valgrind to detect memory leaks
+- [x] Generate Doxygen document
+- [x] Make sure that the repository is updated with deliverables mentioned in Proposal
 
 ## Dependencies
 
