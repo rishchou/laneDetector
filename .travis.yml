@@ -43,6 +43,9 @@ matrix:
 # OPEN CV INSTALLATION BEGINS
 
 before_script:
+  - "export DISPLAY=:99.0"
+  - "sh -e /etc/init.d/xvfb start"
+  - sleep 3
   - git clone https://github.com/opencv/opencv.git
   - cd opencv
   - git checkout 3.3.0
