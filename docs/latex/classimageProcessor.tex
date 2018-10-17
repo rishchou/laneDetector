@@ -1,0 +1,313 @@
+\hypertarget{classimageProcessor}{}\section{image\+Processor Class Reference}
+\label{classimageProcessor}\index{image\+Processor@{image\+Processor}}
+
+
+Class \hyperlink{classimageProcessor}{image\+Processor} The class \hyperlink{classimageProcessor}{image\+Processor} deals with the initial processing algorithms to be performed on the frame before the lines detected are processed further.  
+
+
+
+
+{\ttfamily \#include $<$image\+Processor.\+hpp$>$}
+
+
+
+Inheritance diagram for image\+Processor\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=167pt]{classimageProcessor__inherit__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classimageProcessor_ab81b2da5eb762b48e52824e29dd6b263}{image\+Processor} ()
+\begin{DoxyCompactList}\small\item\em constructor for \hyperlink{classimageProcessor}{image\+Processor} \end{DoxyCompactList}\item 
+virtual \hyperlink{classimageProcessor_a569b7fd659354a79035dd808f407e34f}{$\sim$image\+Processor} ()
+\begin{DoxyCompactList}\small\item\em destructor for \hyperlink{classimageProcessor}{image\+Processor} \end{DoxyCompactList}\item 
+cv\+::\+Mat \hyperlink{classimageProcessor_ae353d4dda0b4cac02d8d24d13ea564cd}{get\+Original\+Image} ()
+\begin{DoxyCompactList}\small\item\em function for retrieving original frame \end{DoxyCompactList}\item 
+cv\+::\+Mat \hyperlink{classimageProcessor_a760757a7f70dc75844a23de9aaa56ea2}{get\+Gray\+Image} ()
+\begin{DoxyCompactList}\small\item\em function for retrieving grayscale frame \end{DoxyCompactList}\item 
+cv\+::\+Mat \hyperlink{classimageProcessor_a89562102bef26b8b558d43f71cb5dba1}{get\+Noise\+Image} ()
+\begin{DoxyCompactList}\small\item\em function for retrieving Noise filtered frame \end{DoxyCompactList}\item 
+cv\+::\+Mat \hyperlink{classimageProcessor_aa8a061deb1036ab029445ff5f9e96c06}{get\+Egde\+Image} ()
+\begin{DoxyCompactList}\small\item\em function for retrieving edge detected frame \end{DoxyCompactList}\item 
+cv\+::\+Mat \hyperlink{classimageProcessor_a4265122d10d5db7962f27f97a1c60d63}{get\+Hough\+Image} ()
+\begin{DoxyCompactList}\small\item\em function for retrieving Hough transformed frame \end{DoxyCompactList}\item 
+void \hyperlink{classimageProcessor_a95a83955f7a69f5e4d1b74030e32a27f}{set\+Original\+Image} (cv\+::\+Mat)
+\begin{DoxyCompactList}\small\item\em function for retrieving and setting the captured frame from video as input image \end{DoxyCompactList}\item 
+cv\+::\+Mat \hyperlink{classimageProcessor_abfe9be72666f5779b2abe3df018442cf}{rgb\+To\+Gray} (cv\+::\+Mat)
+\begin{DoxyCompactList}\small\item\em converts rgb image to grayscale image \end{DoxyCompactList}\item 
+cv\+::\+Mat \hyperlink{classimageProcessor_a704c39f5acb8f8f05f711300de0b4d81}{gray\+To\+R\+GB} (cv\+::\+Mat)
+\begin{DoxyCompactList}\small\item\em converts grayscale image to rgb image \end{DoxyCompactList}\item 
+cv\+::\+Mat \hyperlink{classimageProcessor_ad2578845d7ece8d5e187eddad9fa2b09}{noise\+Filter} (cv\+::\+Mat)
+\begin{DoxyCompactList}\small\item\em filters noise from given input image \end{DoxyCompactList}\item 
+cv\+::\+Mat \hyperlink{classimageProcessor_a2be1acf803ab26d3ba83a668f9a7a987}{edge\+Detector} (cv\+::\+Mat)
+\begin{DoxyCompactList}\small\item\em detect edges from input image \end{DoxyCompactList}\item 
+std\+::vector$<$ cv\+::\+Vec4i $>$ \hyperlink{classimageProcessor_a8718011326c36251f8e1607694d21523}{hough\+Transform} (cv\+::\+Mat, cv\+::\+Mat)
+\begin{DoxyCompactList}\small\item\em generate lines from roi image \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class \hyperlink{classimageProcessor}{image\+Processor} The class \hyperlink{classimageProcessor}{image\+Processor} deals with the initial processing algorithms to be performed on the frame before the lines detected are processed further. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{image\+Processor@{image\+Processor}!image\+Processor@{image\+Processor}}
+\index{image\+Processor@{image\+Processor}!image\+Processor@{image\+Processor}}
+\subsubsection[{\texorpdfstring{image\+Processor()}{imageProcessor()}}]{\setlength{\rightskip}{0pt plus 5cm}image\+Processor\+::image\+Processor (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classimageProcessor_ab81b2da5eb762b48e52824e29dd6b263}{}\label{classimageProcessor_ab81b2da5eb762b48e52824e29dd6b263}
+
+
+constructor for \hyperlink{classimageProcessor}{image\+Processor} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+\index{image\+Processor@{image\+Processor}!````~image\+Processor@{$\sim$image\+Processor}}
+\index{````~image\+Processor@{$\sim$image\+Processor}!image\+Processor@{image\+Processor}}
+\subsubsection[{\texorpdfstring{$\sim$image\+Processor()}{~imageProcessor()}}]{\setlength{\rightskip}{0pt plus 5cm}image\+Processor\+::$\sim$image\+Processor (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{classimageProcessor_a569b7fd659354a79035dd808f407e34f}{}\label{classimageProcessor_a569b7fd659354a79035dd808f407e34f}
+
+
+destructor for \hyperlink{classimageProcessor}{image\+Processor} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+
+
+\subsection{Member Function Documentation}
+\index{image\+Processor@{image\+Processor}!edge\+Detector@{edge\+Detector}}
+\index{edge\+Detector@{edge\+Detector}!image\+Processor@{image\+Processor}}
+\subsubsection[{\texorpdfstring{edge\+Detector(cv\+::\+Mat)}{edgeDetector(cv::Mat)}}]{\setlength{\rightskip}{0pt plus 5cm}cv\+::\+Mat image\+Processor\+::edge\+Detector (
+\begin{DoxyParamCaption}
+\item[{cv\+::\+Mat}]{noise\+Image}
+\end{DoxyParamCaption}
+)}\hypertarget{classimageProcessor_a2be1acf803ab26d3ba83a668f9a7a987}{}\label{classimageProcessor_a2be1acf803ab26d3ba83a668f9a7a987}
+
+
+detect edges from input image 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input} & noise filtered image \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+output edge detected image 
+\end{DoxyReturn}
+\index{image\+Processor@{image\+Processor}!get\+Egde\+Image@{get\+Egde\+Image}}
+\index{get\+Egde\+Image@{get\+Egde\+Image}!image\+Processor@{image\+Processor}}
+\subsubsection[{\texorpdfstring{get\+Egde\+Image()}{getEgdeImage()}}]{\setlength{\rightskip}{0pt plus 5cm}cv\+::\+Mat image\+Processor\+::get\+Egde\+Image (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classimageProcessor_aa8a061deb1036ab029445ff5f9e96c06}{}\label{classimageProcessor_aa8a061deb1036ab029445ff5f9e96c06}
+
+
+function for retrieving edge detected frame 
+
+
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Image after edge detection 
+\end{DoxyReturn}
+\index{image\+Processor@{image\+Processor}!get\+Gray\+Image@{get\+Gray\+Image}}
+\index{get\+Gray\+Image@{get\+Gray\+Image}!image\+Processor@{image\+Processor}}
+\subsubsection[{\texorpdfstring{get\+Gray\+Image()}{getGrayImage()}}]{\setlength{\rightskip}{0pt plus 5cm}cv\+::\+Mat image\+Processor\+::get\+Gray\+Image (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classimageProcessor_a760757a7f70dc75844a23de9aaa56ea2}{}\label{classimageProcessor_a760757a7f70dc75844a23de9aaa56ea2}
+
+
+function for retrieving grayscale frame 
+
+
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Grayscale image 
+\end{DoxyReturn}
+\index{image\+Processor@{image\+Processor}!get\+Hough\+Image@{get\+Hough\+Image}}
+\index{get\+Hough\+Image@{get\+Hough\+Image}!image\+Processor@{image\+Processor}}
+\subsubsection[{\texorpdfstring{get\+Hough\+Image()}{getHoughImage()}}]{\setlength{\rightskip}{0pt plus 5cm}cv\+::\+Mat image\+Processor\+::get\+Hough\+Image (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classimageProcessor_a4265122d10d5db7962f27f97a1c60d63}{}\label{classimageProcessor_a4265122d10d5db7962f27f97a1c60d63}
+
+
+function for retrieving Hough transformed frame 
+
+
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Image with Hough transform generated lines 
+\end{DoxyReturn}
+\index{image\+Processor@{image\+Processor}!get\+Noise\+Image@{get\+Noise\+Image}}
+\index{get\+Noise\+Image@{get\+Noise\+Image}!image\+Processor@{image\+Processor}}
+\subsubsection[{\texorpdfstring{get\+Noise\+Image()}{getNoiseImage()}}]{\setlength{\rightskip}{0pt plus 5cm}cv\+::\+Mat image\+Processor\+::get\+Noise\+Image (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classimageProcessor_a89562102bef26b8b558d43f71cb5dba1}{}\label{classimageProcessor_a89562102bef26b8b558d43f71cb5dba1}
+
+
+function for retrieving Noise filtered frame 
+
+
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Noise filtered image 
+\end{DoxyReturn}
+\index{image\+Processor@{image\+Processor}!get\+Original\+Image@{get\+Original\+Image}}
+\index{get\+Original\+Image@{get\+Original\+Image}!image\+Processor@{image\+Processor}}
+\subsubsection[{\texorpdfstring{get\+Original\+Image()}{getOriginalImage()}}]{\setlength{\rightskip}{0pt plus 5cm}cv\+::\+Mat image\+Processor\+::get\+Original\+Image (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classimageProcessor_ae353d4dda0b4cac02d8d24d13ea564cd}{}\label{classimageProcessor_ae353d4dda0b4cac02d8d24d13ea564cd}
+
+
+function for retrieving original frame 
+
+
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+original input image 
+\end{DoxyReturn}
+\index{image\+Processor@{image\+Processor}!gray\+To\+R\+GB@{gray\+To\+R\+GB}}
+\index{gray\+To\+R\+GB@{gray\+To\+R\+GB}!image\+Processor@{image\+Processor}}
+\subsubsection[{\texorpdfstring{gray\+To\+R\+G\+B(cv\+::\+Mat)}{grayToRGB(cv::Mat)}}]{\setlength{\rightskip}{0pt plus 5cm}cv\+::\+Mat image\+Processor\+::gray\+To\+R\+GB (
+\begin{DoxyParamCaption}
+\item[{cv\+::\+Mat}]{edge\+Image}
+\end{DoxyParamCaption}
+)}\hypertarget{classimageProcessor_a704c39f5acb8f8f05f711300de0b4d81}{}\label{classimageProcessor_a704c39f5acb8f8f05f711300de0b4d81}
+
+
+converts grayscale image to rgb image 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input} & grayscale image \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+output rgb image 
+\end{DoxyReturn}
+\index{image\+Processor@{image\+Processor}!hough\+Transform@{hough\+Transform}}
+\index{hough\+Transform@{hough\+Transform}!image\+Processor@{image\+Processor}}
+\subsubsection[{\texorpdfstring{hough\+Transform(cv\+::\+Mat, cv\+::\+Mat)}{houghTransform(cv::Mat, cv::Mat)}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$ cv\+::\+Vec4i $>$ image\+Processor\+::hough\+Transform (
+\begin{DoxyParamCaption}
+\item[{cv\+::\+Mat}]{mask\+Image, }
+\item[{cv\+::\+Mat}]{hough\+Image}
+\end{DoxyParamCaption}
+)}\hypertarget{classimageProcessor_a8718011326c36251f8e1607694d21523}{}\label{classimageProcessor_a8718011326c36251f8e1607694d21523}
+
+
+generate lines from roi image 
+
+
+\begin{DoxyParams}{Parameters}
+{\em roi} & image \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+output lines 
+\end{DoxyReturn}
+\index{image\+Processor@{image\+Processor}!noise\+Filter@{noise\+Filter}}
+\index{noise\+Filter@{noise\+Filter}!image\+Processor@{image\+Processor}}
+\subsubsection[{\texorpdfstring{noise\+Filter(cv\+::\+Mat)}{noiseFilter(cv::Mat)}}]{\setlength{\rightskip}{0pt plus 5cm}cv\+::\+Mat image\+Processor\+::noise\+Filter (
+\begin{DoxyParamCaption}
+\item[{cv\+::\+Mat}]{gray\+Image}
+\end{DoxyParamCaption}
+)}\hypertarget{classimageProcessor_ad2578845d7ece8d5e187eddad9fa2b09}{}\label{classimageProcessor_ad2578845d7ece8d5e187eddad9fa2b09}
+
+
+filters noise from given input image 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input} & grayscale image \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+noise filtered image 
+\end{DoxyReturn}
+\index{image\+Processor@{image\+Processor}!rgb\+To\+Gray@{rgb\+To\+Gray}}
+\index{rgb\+To\+Gray@{rgb\+To\+Gray}!image\+Processor@{image\+Processor}}
+\subsubsection[{\texorpdfstring{rgb\+To\+Gray(cv\+::\+Mat)}{rgbToGray(cv::Mat)}}]{\setlength{\rightskip}{0pt plus 5cm}cv\+::\+Mat image\+Processor\+::rgb\+To\+Gray (
+\begin{DoxyParamCaption}
+\item[{cv\+::\+Mat}]{original\+Image}
+\end{DoxyParamCaption}
+)}\hypertarget{classimageProcessor_abfe9be72666f5779b2abe3df018442cf}{}\label{classimageProcessor_abfe9be72666f5779b2abe3df018442cf}
+
+
+converts rgb image to grayscale image 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input} & rgb image \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+output grayscale image 
+\end{DoxyReturn}
+\index{image\+Processor@{image\+Processor}!set\+Original\+Image@{set\+Original\+Image}}
+\index{set\+Original\+Image@{set\+Original\+Image}!image\+Processor@{image\+Processor}}
+\subsubsection[{\texorpdfstring{set\+Original\+Image(cv\+::\+Mat)}{setOriginalImage(cv::Mat)}}]{\setlength{\rightskip}{0pt plus 5cm}void image\+Processor\+::set\+Original\+Image (
+\begin{DoxyParamCaption}
+\item[{cv\+::\+Mat}]{image}
+\end{DoxyParamCaption}
+)}\hypertarget{classimageProcessor_a95a83955f7a69f5e4d1b74030e32a27f}{}\label{classimageProcessor_a95a83955f7a69f5e4d1b74030e32a27f}
+
+
+function for retrieving and setting the captured frame from video as input image 
+
+
+\begin{DoxyParams}{Parameters}
+{\em original} & input frame \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\hyperlink{imageProcessor_8hpp}{image\+Processor.\+hpp}\item 
+app/\hyperlink{imageProcessor_8cpp}{image\+Processor.\+cpp}\end{DoxyCompactItemize}

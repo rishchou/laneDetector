@@ -1,0 +1,230 @@
+\hypertarget{classlanes}{}\section{lanes Class Reference}
+\label{classlanes}\index{lanes@{lanes}}
+
+
+Class lanes The class lanes deals with all the operations remaining for lane detection after the hough lines in the image have been detected derived from the base class Image\+Processor.  
+
+
+
+
+{\ttfamily \#include $<$lanes.\+hpp$>$}
+
+
+
+Inheritance diagram for lanes\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=167pt]{classlanes__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for lanes\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=167pt]{classlanes__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classlanes_a81d66bf4687275c3c09d048f662b7bf4}{lanes} ()
+\begin{DoxyCompactList}\small\item\em constructor for lanes \end{DoxyCompactList}\item 
+\hyperlink{classlanes_a00021e14af3a9b14ff5f4b92baa18ab4}{$\sim$lanes} ()
+\begin{DoxyCompactList}\small\item\em destructor for lanes \end{DoxyCompactList}\item 
+std\+::vector$<$ cv\+::\+Vec4i $>$ \hyperlink{classlanes_a7ecd628c303d1e2a25db6edce7f6f3a9}{get\+Left\+Lines} ()
+\begin{DoxyCompactList}\small\item\em function for retrieving set of lines detected on left side \end{DoxyCompactList}\item 
+std\+::vector$<$ cv\+::\+Vec4i $>$ \hyperlink{classlanes_a8a1607edfaf2ecd2bbf308c59161200a}{get\+Right\+Lines} ()
+\begin{DoxyCompactList}\small\item\em function for retrieving set of lines detected on right side \end{DoxyCompactList}\item 
+cv\+::\+Mat \hyperlink{classlanes_a69b92f837457006aa91ea332ce9c24c4}{line\+Separation} (std\+::vector$<$ cv\+::\+Vec4i $>$, cv\+::\+Mat)
+\begin{DoxyCompactList}\small\item\em function to separate left and right lines on the road \end{DoxyCompactList}\item 
+std\+::vector$<$ cv\+::\+Point $>$ \hyperlink{classlanes_a91271ec5b3d5fcc173d640969495d3a6}{fit\+Line} (std\+::vector$<$ cv\+::\+Point $>$, std\+::vector$<$ cv\+::\+Point $>$)
+\begin{DoxyCompactList}\small\item\em function to calculate linear regression of given points on left and right lines. \end{DoxyCompactList}\item 
+std\+::string \hyperlink{classlanes_afa50aa97e8d8a898553bfd05e2ccb791}{lane\+Prediction} (cv\+::\+Vec4f, cv\+::\+Vec4f, std\+::vector$<$ cv\+::\+Point $>$)
+\begin{DoxyCompactList}\small\item\em function to predict lane heading given left anf right line \end{DoxyCompactList}\item 
+void \hyperlink{classlanes_ab46f8c8cd6a5109d5cafe1cb591a4edf}{show\+Output} (std\+::string, cv\+::\+Mat, std\+::vector$<$ cv\+::\+Point $>$)
+\begin{DoxyCompactList}\small\item\em function for displaying the output \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string {\bfseries prediction}\hypertarget{classlanes_af44823fc2f1e0fe31c26ec6c4c409f26}{}\label{classlanes_af44823fc2f1e0fe31c26ec6c4c409f26}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class lanes The class lanes deals with all the operations remaining for lane detection after the hough lines in the image have been detected derived from the base class Image\+Processor. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{lanes@{lanes}!lanes@{lanes}}
+\index{lanes@{lanes}!lanes@{lanes}}
+\subsubsection[{\texorpdfstring{lanes()}{lanes()}}]{\setlength{\rightskip}{0pt plus 5cm}lanes\+::lanes (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classlanes_a81d66bf4687275c3c09d048f662b7bf4}{}\label{classlanes_a81d66bf4687275c3c09d048f662b7bf4}
+
+
+constructor for lanes 
+
+
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+\index{lanes@{lanes}!````~lanes@{$\sim$lanes}}
+\index{````~lanes@{$\sim$lanes}!lanes@{lanes}}
+\subsubsection[{\texorpdfstring{$\sim$lanes()}{~lanes()}}]{\setlength{\rightskip}{0pt plus 5cm}lanes\+::$\sim$lanes (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classlanes_a00021e14af3a9b14ff5f4b92baa18ab4}{}\label{classlanes_a00021e14af3a9b14ff5f4b92baa18ab4}
+
+
+destructor for lanes 
+
+
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+
+
+\subsection{Member Function Documentation}
+\index{lanes@{lanes}!fit\+Line@{fit\+Line}}
+\index{fit\+Line@{fit\+Line}!lanes@{lanes}}
+\subsubsection[{\texorpdfstring{fit\+Line(std\+::vector$<$ cv\+::\+Point $>$, std\+::vector$<$ cv\+::\+Point $>$)}{fitLine(std::vector< cv::Point >, std::vector< cv::Point >)}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$ cv\+::\+Point $>$ lanes\+::fit\+Line (
+\begin{DoxyParamCaption}
+\item[{std\+::vector$<$ cv\+::\+Point $>$}]{right\+Pts, }
+\item[{std\+::vector$<$ cv\+::\+Point $>$}]{left\+Pts}
+\end{DoxyParamCaption}
+)}\hypertarget{classlanes_a91271ec5b3d5fcc173d640969495d3a6}{}\label{classlanes_a91271ec5b3d5fcc173d640969495d3a6}
+
+
+function to calculate linear regression of given points on left and right lines. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em set} & of left and right points \\
+\hline
+\end{DoxyParams}
+\index{lanes@{lanes}!get\+Left\+Lines@{get\+Left\+Lines}}
+\index{get\+Left\+Lines@{get\+Left\+Lines}!lanes@{lanes}}
+\subsubsection[{\texorpdfstring{get\+Left\+Lines()}{getLeftLines()}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$cv\+::\+Vec4i$>$ lanes\+::get\+Left\+Lines (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classlanes_a7ecd628c303d1e2a25db6edce7f6f3a9}{}\label{classlanes_a7ecd628c303d1e2a25db6edce7f6f3a9}
+
+
+function for retrieving set of lines detected on left side 
+
+
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+vector containing points describing set of left lines 
+\end{DoxyReturn}
+\index{lanes@{lanes}!get\+Right\+Lines@{get\+Right\+Lines}}
+\index{get\+Right\+Lines@{get\+Right\+Lines}!lanes@{lanes}}
+\subsubsection[{\texorpdfstring{get\+Right\+Lines()}{getRightLines()}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$cv\+::\+Vec4i$>$ lanes\+::get\+Right\+Lines (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classlanes_a8a1607edfaf2ecd2bbf308c59161200a}{}\label{classlanes_a8a1607edfaf2ecd2bbf308c59161200a}
+
+
+function for retrieving set of lines detected on right side 
+
+
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+vector containing points describing set of right lines 
+\end{DoxyReturn}
+\index{lanes@{lanes}!lane\+Prediction@{lane\+Prediction}}
+\index{lane\+Prediction@{lane\+Prediction}!lanes@{lanes}}
+\subsubsection[{\texorpdfstring{lane\+Prediction(cv\+::\+Vec4f, cv\+::\+Vec4f, std\+::vector$<$ cv\+::\+Point $>$)}{lanePrediction(cv::Vec4f, cv::Vec4f, std::vector< cv::Point >)}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string lanes\+::lane\+Prediction (
+\begin{DoxyParamCaption}
+\item[{cv\+::\+Vec4f}]{left\+Line, }
+\item[{cv\+::\+Vec4f}]{right\+Line, }
+\item[{std\+::vector$<$ cv\+::\+Point $>$}]{output\+Lines}
+\end{DoxyParamCaption}
+)}\hypertarget{classlanes_afa50aa97e8d8a898553bfd05e2ccb791}{}\label{classlanes_afa50aa97e8d8a898553bfd05e2ccb791}
+
+
+function to predict lane heading given left anf right line 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em left} & line \\
+\hline
+\mbox{\tt in}  & {\em right} & line \\
+\hline
+\mbox{\tt in}  & {\em output} & line to calculate x intercept \\
+\hline
+\end{DoxyParams}
+\index{lanes@{lanes}!line\+Separation@{line\+Separation}}
+\index{line\+Separation@{line\+Separation}!lanes@{lanes}}
+\subsubsection[{\texorpdfstring{line\+Separation(std\+::vector$<$ cv\+::\+Vec4i $>$, cv\+::\+Mat)}{lineSeparation(std::vector< cv::Vec4i >, cv::Mat)}}]{\setlength{\rightskip}{0pt plus 5cm}cv\+::\+Mat lanes\+::line\+Separation (
+\begin{DoxyParamCaption}
+\item[{std\+::vector$<$ cv\+::\+Vec4i $>$}]{lines, }
+\item[{cv\+::\+Mat}]{image}
+\end{DoxyParamCaption}
+)}\hypertarget{classlanes_a69b92f837457006aa91ea332ce9c24c4}{}\label{classlanes_a69b92f837457006aa91ea332ce9c24c4}
+
+
+function to separate left and right lines on the road 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em set} & of all lines \\
+\hline
+\mbox{\tt in}  & {\em input} & image \\
+\hline
+\end{DoxyParams}
+\index{lanes@{lanes}!show\+Output@{show\+Output}}
+\index{show\+Output@{show\+Output}!lanes@{lanes}}
+\subsubsection[{\texorpdfstring{show\+Output(std\+::string, cv\+::\+Mat, std\+::vector$<$ cv\+::\+Point $>$)}{showOutput(std::string, cv::Mat, std::vector< cv::Point >)}}]{\setlength{\rightskip}{0pt plus 5cm}void lanes\+::show\+Output (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{prediction, }
+\item[{cv\+::\+Mat}]{frame, }
+\item[{std\+::vector$<$ cv\+::\+Point $>$}]{output\+Lines}
+\end{DoxyParamCaption}
+)}\hypertarget{classlanes_ab46f8c8cd6a5109d5cafe1cb591a4edf}{}\label{classlanes_ab46f8c8cd6a5109d5cafe1cb591a4edf}
+
+
+function for displaying the output 
+
+
+\begin{DoxyParams}{Parameters}
+{\em string} & which contains the direction of heading \\
+\hline
+{\em original} & Image of the frame \\
+\hline
+{\em set} & of points which describe the lanes \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\hyperlink{lanes_8hpp}{lanes.\+hpp}\item 
+app/\hyperlink{lanes_8cpp}{lanes.\+cpp}\end{DoxyCompactItemize}

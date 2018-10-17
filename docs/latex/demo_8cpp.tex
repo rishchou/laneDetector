@@ -1,0 +1,71 @@
+\hypertarget{demo_8cpp}{}\section{app/demo.cpp File Reference}
+\label{demo_8cpp}\index{app/demo.\+cpp@{app/demo.\+cpp}}
+
+
+\subsection*{\+: Implements an instance of lane detection application } 
+
+
+{\ttfamily \#include $<$iostream$>$}\\*
+{\ttfamily \#include $<$string$>$}\\*
+{\ttfamily \#include $<$vector$>$}\\*
+{\ttfamily \#include \char`\"{}opencv2/opencv.\+hpp\char`\"{}}\\*
+{\ttfamily \#include $<$opencv2/objdetect/objdetect.\+hpp$>$}\\*
+{\ttfamily \#include $<$opencv2/imgproc/imgproc.\+hpp$>$}\\*
+{\ttfamily \#include $<$opencv2/core/core.\+hpp$>$}\\*
+{\ttfamily \#include $<$opencv2/highgui/highgui.\+hpp$>$}\\*
+{\ttfamily \#include \char`\"{}../include/image\+Processor.\+hpp\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../include/lanes.\+hpp\char`\"{}}\\*
+Include dependency graph for demo.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{demo_8cpp__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{demo_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{main} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Function main that runs the main algorithm of the lane detection. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsection*{\+: Implements an instance of lane detection application }
+
+============================================================================
+
+\begin{DoxyAuthor}{Author}
+\+: Rishabh Choudhary, Akash Atharv 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+\+: 1.\+0  \+: M\+IT License  2018 Rishabh Choudhary, Akash Atharv 
+\end{DoxyVersion}
+
+
+\subsection{Function Documentation}
+\index{demo.\+cpp@{demo.\+cpp}!main@{main}}
+\index{main@{main}!demo.\+cpp@{demo.\+cpp}}
+\subsubsection[{\texorpdfstring{main(int argc, char $\ast$argv[])}{main(int argc, char *argv[])}}]{\setlength{\rightskip}{0pt plus 5cm}int main (
+\begin{DoxyParamCaption}
+\item[{int}]{argc, }
+\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]}}
+\end{DoxyParamCaption}
+)}\hypertarget{demo_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{}\label{demo_8cpp_a0ddf1224851353fc92bfbff6f499fa97}
+
+
+Function main that runs the main algorithm of the lane detection. 
+
+It will read a video of a car in the highway and it will output the same video but with the plotted detected lane 
+\begin{DoxyParams}{Parameters}
+{\em argv\mbox{[}$\,$\mbox{]}} & is a string to the full path of the demo video \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 for successful execution, -\/1 for failed execution 
+\end{DoxyReturn}
+Superimpose mask with the edge detected image to generate region of interest image
+
+Convert back the grayscale image to R\+GB for inputting into Hough transform
+
+Apply linear regression on the set of points obtained from separated lines to generate one line on left and right side which form the lane
