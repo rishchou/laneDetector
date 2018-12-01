@@ -1,11 +1,36 @@
-/**============================================================================
- * @file       : imageProcessor.cpp
- * @author     : Rishabh Choudhary, Akash Atharv
- * @version    : 1.0
- * @copyright  : MIT License
- * Copyright 2018 Rishabh Choudhary, Akash Atharv
- * @brief      : Contains function definitions of the class imageProcessor
- *============================================================================
+/**
+ *  MIT License
+ *
+ *  Copyright (c) 2018 Rishabh Choudhary
+ *
+ *  Permission is hereby granted, free of charge, to any person obtaining a
+ *  copy of this software and associated documentation files (the "Software"),
+ *  to deal in the Software without restriction, including without
+ *  limitation the rights to use, copy, modify, merge, publish, distribute,
+ *  sublicense, and/or sell copies of the Software, and to permit persons to
+ *  whom the Software is furnished to do so, subject to the following
+ *  conditions:
+ *
+ *  The above copyright notice and this permission notice shall be included
+ *  in all copies or substantial portions of the Software.
+ *
+ *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ *  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ *  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+ *  THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ *  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ *  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+ *  DEALINGS IN THE SOFTWARE.
+ *
+ *  @file    imageProcessor.cpp
+ *  @author  Rishabh Choudhary
+ *  @copyright MIT License
+ *
+ *  @brief  ENPM808X : Midterm project for traffic lane detection
+ *
+ *  @section DESCRIPTION
+ *
+ *  THis file contains the class implementation of imageProcessor class
  */
 
 #include "../include/imageProcessor.hpp"
@@ -35,10 +60,12 @@ void imageProcessor::setOriginalImage(cv::Mat image) {
 }
 
 cv::Mat imageProcessor::rgbToGray(cv::Mat originalImage) {
+        originalImage = getOriginalImage();
         cv::cvtColor(originalImage, grayImage, CV_BGR2GRAY);
         return grayImage;
 }
 cv::Mat imageProcessor::grayToRGB(cv::Mat edgeImage) {
+        edgeImage = getEgdeImage();
         cv::cvtColor(edgeImage, houghImage, CV_GRAY2BGR);
         return houghImage;
 }
@@ -47,6 +74,8 @@ cv::Mat imageProcessor::noiseFilter(cv::Mat grayImage) {
         /*
          * Apply Gaussian blur with kernel size 3
          */
+        cv:: Mat inputImage = getOriginalImage();
+        grayImage = rgbToGray(inputImage);
         cv::GaussianBlur(grayImage, noiseImage, cv::Size(3, 3), 0, 0);
         return noiseImage;
 }
@@ -54,6 +83,11 @@ cv::Mat imageProcessor::edgeDetector(cv::Mat noiseImage) {
         int lowThreshold = 100;
         int ratio = 3;
         int kernelSize = 3;
+        cv::Mat inputImage;
+        inputImage = getOriginalImage();
+        setOriginalImage(inputImage);
+                
+        noiseImage = noiseFilter(rgbToGray(inputImage));
         cv::Canny(noiseImage, edgeImage, lowThreshold,
         lowThreshold*ratio, kernelSize);
         return edgeImage;
@@ -68,6 +102,7 @@ maskImage, cv::Mat houghImage) {
    * min Number of votes = 20
    * The paramteres are calculated by hit and trial
    */
+        houghImage = getHoughImage();
         cv::HoughLinesP(maskImage, lines, 1, CV_PI/180, 20 , 20, 300);
         for (auto i : lines) {
                 cv::line(houghImage, cv::Point(i[0], i[1]),

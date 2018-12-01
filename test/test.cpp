@@ -1,12 +1,39 @@
-/**============================================================================
- * @file        : test.cpp
- * @author      : Rishabh Choudhary, Akash Atharv
- * @version     : 1.0
- * @copyright   : MIT License
- * Copyright 2018 Rishabh Choudhary, Akash Atharv
- * @brief        Contains Test cases for testing prediction heading generated
- *============================================================================
+/**
+ *  MIT License
+ *
+ *  Copyright (c) 2018 Rishabh Choudhary
+ *
+ *  Permission is hereby granted, free of charge, to any person obtaining a
+ *  copy of this software and associated documentation files (the "Software"),
+ *  to deal in the Software without restriction, including without
+ *  limitation the rights to use, copy, modify, merge, publish, distribute,
+ *  sublicense, and/or sell copies of the Software, and to permit persons to
+ *  whom the Software is furnished to do so, subject to the following
+ *  conditions:
+ *
+ *  The above copyright notice and this permission notice shall be included
+ *  in all copies or substantial portions of the Software.
+ *
+ *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ *  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ *  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+ *  THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ *  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ *  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+ *  DEALINGS IN THE SOFTWARE.
+ *
+ *  @file    test.cpp
+ *  @author  Rishabh Choudhary
+ *  @copyright MIT License
+ *
+ *  @brief  ENPM808X : Google Test functions for laneDetector
+ *
+ *  @section DESCRIPTION
+ *
+ *  THis file contains the test function and test cases for testing
+ *  the functionality of laneDetector
  */
+
 #include <gtest/gtest.h>
 #include <iostream>
 #include <string>
@@ -18,6 +45,7 @@
 #include <opencv2/highgui/highgui.hpp>
 #include "../include/imageProcessor.hpp"
 #include "../include/lanes.hpp"
+
 
 /**
  *@brief Function implentation to generate heading for a single frame
@@ -90,6 +118,5 @@ TEST(LaneHeadingTest, Vehicle_right_turn) {
 TEST(LaneHeadingTest, Vehicle_left_turn) {
       EXPECT_EQ(testHeading(455), "Heading Left");
 }
-
 
 
