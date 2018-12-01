@@ -36,7 +36,7 @@ class lanes: public imageProcessor {
          * @param none
          * @return none
          */
-        ~lanes();
+        virtual ~lanes();
         /**
          * @brief function for retrieving set of lines detected on left side
          * @param none
@@ -80,6 +80,12 @@ class lanes: public imageProcessor {
          * @return none
          */
         void showOutput(std::string, cv::Mat, std::vector<cv::Point>);
+        /**
+         * @brief virtual function for using google Mock
+         * @param none
+         * @return int
+         */
+        virtual int output() { return 0;}
 
  private:
         cv::Point rightB;/* y = mX + B */     /* B of right line */
