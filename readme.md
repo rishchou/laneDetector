@@ -16,6 +16,7 @@ Sprint 2:
 
 ## Project Overview
 
+**This branch is specifically created for Google Mock implementation. To learn more continue on the Google Mock section of the readme**
 The project aims to design and develop Traffic lane detection and following for autonomous vehicles. Lane Detection technology is being used for various applications in the autonomous vehicular domain such as accident prevention and self driving cars. Self driving cars incoporate various aspects of technology such as perception, control and navigation/planning. 
 This project focuses on the perception module to develop traffic lane detection and following using OpenCV with C++. We aim to develop a software infrastructure which is able to detect road lanes and signal the driver in case the car deviates from the designated lane. The lane detection  includes multiple computer vision alorithms implemented in a sequence to finally output the detected lanes given a input video/image of the road.
 
@@ -228,6 +229,13 @@ perspetive view (or Windows->Perspective->Open Perspective->C/C++).
 - Git
 
     It is possible to manage version control through Eclipse and the git plugin, but it typically requires creating another project.
+
+## Google Mock
+
+Google Mock is a convenient way to check whether a local implementation will work in accordance with a global interface without actually accessing the Global interface. Here, we create a Mock counterpart of the global interface which is used for testing our implementation. GMocks are essentially not used for testing functionality of a component but for testing the overall implementation and structure of the code.
+For more information, follow this [link](https://github.com/abseil/googletest/tree/master/googlemock/docs)
+
+**For this implementaion intially implemented function"lanePrediction" and "fitLine" of the class "Lanes" are used so there is no need to update UML or activity diagrams** 
 
 ## Doxygen
 
