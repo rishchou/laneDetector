@@ -49,7 +49,7 @@
 using ::testing::_;
 
 class mockImageProcessor : public imageProcessor {
-  public:
+ public:
     MOCK_METHOD0(getEgdeImage, cv::Mat());
     MOCK_METHOD1(rgbToGray, cv::Mat(cv::Mat));
     MOCK_METHOD1(noiseFilter, cv::Mat(cv::Mat));
@@ -71,4 +71,3 @@ TEST(imageProcessorTest, fetchImageTest) {
 
     mock.grayToRGB(img);
 }
-         

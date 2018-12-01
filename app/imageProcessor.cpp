@@ -86,7 +86,6 @@ cv::Mat imageProcessor::edgeDetector(cv::Mat noiseImage) {
         cv::Mat inputImage;
         inputImage = getOriginalImage();
         setOriginalImage(inputImage);
-                
         noiseImage = noiseFilter(rgbToGray(inputImage));
         cv::Canny(noiseImage, edgeImage, lowThreshold,
         lowThreshold*ratio, kernelSize);

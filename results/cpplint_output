@@ -1,8 +1,10 @@
-viki@ubuntu:~/Documents/midterm/laneDetector/cpp-boilerplate$ cpplint $( find . -name \*.hpp -or -name \*.cpp | grep -vE -e "^./build/" -e "^./vendor/" -e "^./docs/" -e "^./results" )Done processing ./include/lanes.hpp
+rishchou@rishchou-UX550VE:~/Documents/gmock_extra_credit/laneDetector$ cpplint $( find . -name \*.hpp -or -name \*.cpp | grep -vE -e "^./build/" -e "^./vendor/" -e "^./docs/" -e "^./results" )
+Done processing ./app/lanes.cpp
+Done processing ./app/imageProcessor.cpp
+Done processing ./app/demo.cpp
+Done processing ./include/lanes.hpp
 Done processing ./include/imageProcessor.hpp
 Done processing ./test/main.cpp
 Done processing ./test/test.cpp
-Done processing ./app/imageProcessor.cpp
-Done processing ./app/demo.cpp
-Done processing ./app/lanes.cpp
+Done processing ./test/mockImageProcessor.cpp
 

@@ -22,7 +22,6 @@ lanes::~lanes() {
 
 cv::Mat lanes::lineSeparation(std::vector<cv::Vec4i> lines, cv::Mat image) {
         cv::Mat separateImage;
-        std::vector<double> slopes;
         /* Set the slope threshold to 0.2 to discard horizontal lines */
         double slopeThreshold = 0.2;
 
