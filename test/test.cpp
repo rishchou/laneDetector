@@ -36,14 +36,16 @@ USE OR OTHER DEALINGS IN THE SOFTWARE.
 #include <opencv2/highgui/highgui.hpp>
 #include "../include/imageProcessor.hpp"
 #include "../include/lanes.hpp"
-//using ::testing::AtLeast;
 using::testing::_;
-
+/**
+ * @brief Class Mocklanes
+ * The class Mocklanes is used for defining GMock methods
+ */
 class Mocklanes : public lanes {
  public:
-/* Mock method for the function is defined */
- MOCK_METHOD3(lanePrediction,std::string (cv::Vec4f leftLine, cv::Vec4f rightLine,
-std::vector<cv::Point> outputLines));
+  /* Mock method for the function is defined */
+       MOCK_METHOD3(lanePrediction, std::string(cv::Vec4f leftLine,
+       cv::Vec4f rightLine, std::vector<cv::Point> outputLines));
 };
 
 /**
@@ -122,13 +124,13 @@ TEST(LaneHeadingTest, Vehicle_left_turn) {
  *@param none
  *@return none
  */
-TEST(OuputTest,Outputmustshow) {
+TEST(GMock, Function_should_be_called) {
 /* Object for mocking is created */
       Mocklanes mock;
 /* Condition for checking the mock is implemented */
-      EXPECT_CALL(mock,lanePrediction(_,_,_)).Times(1);
+      EXPECT_CALL(mock, lanePrediction(_, _, _)).Times(1);
       std::vector<cv::Point> rightPts;
       std::vector<cv::Point> leftPts;
 /* fitLine Function is called for verifying */
-      mock.fitLine(leftPts,rightPts);
+      mock.fitLine(leftPts, rightPts);
 }
