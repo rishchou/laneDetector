@@ -69,7 +69,7 @@ class lanes: public imageProcessor {
          * @param[in] right line
          * @param[in] output line to calculate x intercept
          */
-        std::string lanePrediction(cv::Vec4f, cv::Vec4f,
+        virtual std::string lanePrediction(cv::Vec4f, cv::Vec4f,
                                      std::vector<cv::Point>);
         std::string prediction;
         /**
@@ -85,7 +85,6 @@ class lanes: public imageProcessor {
          * @param none
          * @return int
          */
-        virtual int output() { return 0;}
 
  private:
         cv::Point rightB;/* y = mX + B */     /* B of right line */
