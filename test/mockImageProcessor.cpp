@@ -48,13 +48,43 @@
 
 using ::testing::_;
 
+/*
+ * @brief : class mockImageProcessor
+ * 
+ * The given class mocks the class imageProcessor to help in testing lanes 
+ * class
+ */
 class mockImageProcessor : public imageProcessor {
  public:
+  /*
+   * @brief : The given function mocks the method getEgdeImage 
+   * 
+   * @param none
+   * @return void
+   */
     MOCK_METHOD0(getEgdeImage, cv::Mat());
+  /*
+   * @brief : MOcks the method rgbToGray, 
+   * which converts rgb image to grayscale
+   *
+   * @param input image
+   * @return output image
+   */
     MOCK_METHOD1(rgbToGray, cv::Mat(cv::Mat));
+  /*
+   * @brief : MOcks the noise filter method
+   * @param input image 
+   * @return output image
+   */
     MOCK_METHOD1(noiseFilter, cv::Mat(cv::Mat));
 };
 
+/**
+ * @brief Test case to test that input imagine 
+ * implements edge detection
+ * @param none
+ * @return none
+ */
 TEST(imageProcessorTest, edgeDetectorTest) {
     mockImageProcessor mock;
     ::testing::Expectation init = EXPECT_CALL(mock, rgbToGray(_)).Times(1);
@@ -64,6 +94,11 @@ TEST(imageProcessorTest, edgeDetectorTest) {
     mock.edgeDetector(img);
 }
 
+/**
+ * @brief Test case to check that getEdgeImage interface is tested
+ * @param none
+ * @return none
+ */
 TEST(imageProcessorTest, fetchImageTest) {
     mockImageProcessor mock;
     ::testing::Expectation init = EXPECT_CALL(mock, getEgdeImage()).Times(1);
