@@ -5,6 +5,7 @@ add_executable(
     cpp-test
     main.cpp
     test.cpp
+    mockImageProcessor.cpp
     ../app/imageProcessor.cpp
     ../app/lanes.cpp
     ../include/imageProcessor.hpp
