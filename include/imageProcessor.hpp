@@ -47,68 +47,68 @@ class imageProcessor {
          * @param none
          * @return original input image
          */
-        cv::Mat getOriginalImage();
+        virtual cv::Mat getOriginalImage();
         /**
          * @brief function for retrieving grayscale frame
          * @param none
          * @return Grayscale image
          */
-        cv::Mat getGrayImage();
+        virtual cv::Mat getGrayImage();
         /**
          * @brief function for retrieving Noise filtered frame
          * @param none
          * @return Noise filtered image
          */
-        cv::Mat getNoiseImage();
+        virtual cv::Mat getNoiseImage();
         /**
          * @brief function for retrieving edge detected frame
          * @param none
          * @return Image after edge detection
          */
-        cv::Mat getEgdeImage();
+        virtual cv::Mat getEgdeImage();
         /**
          * @brief function for retrieving Hough transformed frame
          * @param none
          * @return Image with Hough transform generated lines
          */
-        cv::Mat getHoughImage();
+        virtual cv::Mat getHoughImage();
         /**
          * @brief function for retrieving and setting
          * the captured frame from video as input image
          * @param original input frame
          * @return none
          */
-        void setOriginalImage(cv::Mat);
+        virtual void setOriginalImage(cv::Mat);
 	/**
    	 * @brief converts rgb image to grayscale image
    	 * @param input rgb image
    	 * @return output grayscale image
    	 */
-        cv::Mat rgbToGray(cv::Mat);
+        virtual cv::Mat rgbToGray(cv::Mat);
 	/**
    	 * @brief converts grayscale image to rgb image
    	 * @param input grayscale image
    	 * @return output rgb image
    	 */
-        cv::Mat grayToRGB(cv::Mat);
+        virtual cv::Mat grayToRGB(cv::Mat);
 	/**
          * @brief filters noise from given input image
          * @param input grayscale image
          * @return noise filtered image
          */
-        cv::Mat noiseFilter(cv::Mat);
+        virtual cv::Mat noiseFilter(cv::Mat);
         /**
          * @brief detect edges from input image
          * @param input noise filtered image
          * @return output edge detected image
          */
-        cv::Mat edgeDetector(cv::Mat);
+        virtual cv::Mat edgeDetector(cv::Mat);
 	/**
          * @brief generate lines from roi image
          * @param roi image
          * @return output lines
          */
-        std::vector<cv::Vec4i> houghTransform(cv::Mat, cv::Mat);
+        virtual std::vector<cv::Vec4i> houghTransform(cv::Mat, cv::Mat);
 
  private:
         cv::Mat originalImage;       /* Input frame */
