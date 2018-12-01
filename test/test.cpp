@@ -4,10 +4,11 @@
  * @version     : 1.0
  * @copyright   : MIT License
  * Copyright 2018 Rishabh Choudhary, Akash Atharv
- * @brief        Contains Test cases for testing prediction heading generated
+ * @brief        Contains Test and mock cases for testing prediction heading generated
  *============================================================================
  */
 #include <gtest/gtest.h>
+#include <gmock/gmock.h>
 #include <iostream>
 #include <string>
 #include <vector>
@@ -18,6 +19,15 @@
 #include <opencv2/highgui/highgui.hpp>
 #include "../include/imageProcessor.hpp"
 #include "../include/lanes.hpp"
+//using ::testing::AtLeast;
+using::testing::_;
+
+class Mocklanes : public lanes {
+ public:
+ MOCK_METHOD3(lanePrediction,std::string (cv::Vec4f leftLine, cv::Vec4f rightLine,
+std::vector<cv::Point> outputLines));
+ //MOCK_METHOD1(,);
+};
 
 /**
  *@brief Function implentation to generate heading for a single frame
@@ -90,6 +100,16 @@ TEST(LaneHeadingTest, Vehicle_right_turn) {
 TEST(LaneHeadingTest, Vehicle_left_turn) {
       EXPECT_EQ(testHeading(455), "Heading Left");
 }
-
-
-
+/**
+ *@brief Mock test for class lanes
+ *@param none
+ *@return none
+ */
+TEST(OuputTest,Outputmustshow) {
+      Mocklanes mock;
+      EXPECT_CALL(mock,lanePrediction(_,_,_)).Times(1);
+    //  mock.output();
+      std::vector<cv::Point> rightPts;
+      std::vector<cv::Point> leftPts;
+      mock.fitLine(leftPts,rightPts);
+}
