@@ -122,9 +122,18 @@ mkdir build
 cd build
 cmake ..
 make
-Run tests: ./test/cpp-test
+Run tests(including google mock tests): ./test/cpp-test
 Run program: ./app/laneDetector ../data//Lane\ Detection\ Test\ Video\ 01.mp4
 ```
+
+## Google Mock
+
+Google mock is a testing framework used to test dependency between classes and methods. 
+
+Google mock has been added to the project to test the interface between the classes. The class imageProcessor has been mocked and two test cases have been added in mockImageProcessor.cpp in test directory. 
+
+CMakeLists.txt has been updated to link googlemock libraries in both main repository and test directory.
+The two test cases are added to test that rgbToGray and noiseFilter have been properly invoked for edgeDetection.
 
 ## Building for code coverage 
 ```
