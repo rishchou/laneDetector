@@ -80,11 +80,6 @@ class lanes: public imageProcessor {
          * @return none
          */
         void showOutput(std::string, cv::Mat, std::vector<cv::Point>);
-        /**
-         * @brief virtual function for using google Mock
-         * @param none
-         * @return int
-         */
 
  private:
         cv::Point rightB;/* y = mX + B */     /* B of right line */

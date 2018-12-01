@@ -24,9 +24,9 @@ using::testing::_;
 
 class Mocklanes : public lanes {
  public:
+/* Mock method for the function is defined */
  MOCK_METHOD3(lanePrediction,std::string (cv::Vec4f leftLine, cv::Vec4f rightLine,
 std::vector<cv::Point> outputLines));
- //MOCK_METHOD1(,);
 };
 
 /**
@@ -106,10 +106,12 @@ TEST(LaneHeadingTest, Vehicle_left_turn) {
  *@return none
  */
 TEST(OuputTest,Outputmustshow) {
+/* Object for mocking is created */
       Mocklanes mock;
+/* Condition for checking the mock is implemented */
       EXPECT_CALL(mock,lanePrediction(_,_,_)).Times(1);
-    //  mock.output();
       std::vector<cv::Point> rightPts;
       std::vector<cv::Point> leftPts;
+/* fitLine Function is called for verifying */
       mock.fitLine(leftPts,rightPts);
 }
