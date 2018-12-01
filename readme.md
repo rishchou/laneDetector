@@ -135,6 +135,32 @@ Google mock has been added to the project to test the interface between the clas
 CMakeLists.txt has been updated to link googlemock libraries in both main repository and test directory.
 The two test cases are added to test that rgbToGray and noiseFilter have been properly invoked for edgeDetection.
 
+After running unit tests as shown above, the output will be as shown below:
+```
+ ./test/cpp-test 
+```
+[==========] Running 5 tests from 2 test cases.
+[----------] Global test environment set-up.
+[----------] 3 tests from LaneHeadingTest
+[ RUN      ] LaneHeadingTest.Vehicle_go_straight
+[       OK ] LaneHeadingTest.Vehicle_go_straight (224 ms)
+[ RUN      ] LaneHeadingTest.Vehicle_right_turn
+[       OK ] LaneHeadingTest.Vehicle_right_turn (125 ms)
+[ RUN      ] LaneHeadingTest.Vehicle_left_turn
+[       OK ] LaneHeadingTest.Vehicle_left_turn (140 ms)
+[----------] 3 tests from LaneHeadingTest (489 ms total)
+
+[----------] 2 tests from imageProcessorTest
+[ RUN      ] imageProcessorTest.edgeDetectorTest
+[       OK ] imageProcessorTest.edgeDetectorTest (22 ms)
+[ RUN      ] imageProcessorTest.fetchImageTest
+[       OK ] imageProcessorTest.fetchImageTest (20 ms)
+[----------] 2 tests from imageProcessorTest (42 ms total)
+
+[----------] Global test environment tear-down
+[==========] 5 tests from 2 test cases ran. (531 ms total)
+[  PASSED  ] 5 tests.
+
 ## Building for code coverage 
 ```
 sudo apt-get install lcov
